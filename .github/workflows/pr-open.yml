@@ -13,7 +13,7 @@ jobs:
     name: Create test resources
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ tsJSON(github.event.pull_request) }}"
+      - run: echo "${{ toJSON(github.event.pull_request) }}"
       - run: echo "Test resources created"
         if: github.event.pull_request.opened == true || github.event.pull_request.reopened == true
 
