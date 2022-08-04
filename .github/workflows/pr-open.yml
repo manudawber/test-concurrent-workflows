@@ -11,11 +11,11 @@ concurrency:
 jobs:
   job1:
     name: Create test resources
-    if: github.event.pull_request.opened == true || github.event.pull_request.reopened == true
     runs-on: ubuntu-latest
     steps:
-      - run: date
+      - run: echo "${{ github.event.pull_request }}"
       - run: echo "Test resources created"
+        if: github.event.pull_request.opened == true || github.event.pull_request.reopened == true
 
   job2:
     name: Run tests
