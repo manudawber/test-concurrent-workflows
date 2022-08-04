@@ -1,0 +1,19 @@
+name: PR Open
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+    branches:
+      - main
+
+concurrency:
+  group: group
+
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps:
+      run: date
+      run: sleep 10
