@@ -1,4 +1,4 @@
-name: PR Push
+name: PR
 
 on:
   pull_request:
@@ -9,8 +9,17 @@ concurrency:
   group: group
 
 jobs:
-  job:
+  job1:
+    name: Create test resources
     runs-on: ubuntu-latest
     steps:
-      run: date
-      run: sleep 10
+      - run: echo "${{ toJSON(github.event.pull_request) }}"
+      - run: echo "Test resources created"
+        if: github.event.pull_request.opened == true || github.event.pull_request.reopened == true
+
+  job2:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - run: date
+      - run: echo "Tests completed"
