@@ -11,7 +11,7 @@ concurrency:
 jobs:
   job1:
     name: Create test resources
-    if: ${{ github.event.pull_request.opened == 'true' || github.event.pull_request.reopened == 'true' }}
+    if: github.event.pull_request.opened == true || github.event.pull_request.reopened == true
     runs-on: ubuntu-latest
     steps:
       - run: date
